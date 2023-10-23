@@ -8,21 +8,11 @@ import java.util.Scanner;
 public class RockPaperScissors {
 
     /* ANY CODE YOU NEED HERE */
-	
-	
-	
-	static int result = 0;
-	static int wins = 0;
-	static int losses = 0;
-	static int ties = 0;
-	static String play;
-	static String input;
-	static boolean RPSvalid = true;
-	static boolean playAgainValid = true;
-	static boolean loop = true;
-	static boolean run = true;
-	
-	
+	private static int result = 0;
+	private static int wins = 0;
+	private static int losses = 0;
+	private static int ties = 0;
+	private static boolean RPSvalid = true;
 	
     /**
      * JAVADOC HERE
@@ -32,7 +22,11 @@ public class RockPaperScissors {
     public static void play(Scanner sc) {
         /* YOUR CODE HERE */
     	//Start
-    	
+    	boolean playAgainValid = true;
+    	boolean loop = true;
+    	boolean run = true;
+    	String input;
+    	String play;
     	System.out.println("Welcome to Rock Paper Scissors");
     	wins = 0;
     	losses = 0;
