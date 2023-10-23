@@ -5,27 +5,31 @@ package u4pp;
 import java.util.Scanner;
 
 public class PalindromeTester {
-	static String temp = "";
-	static int x;
-	static String phrase;
-	static boolean test;
-	static String response;
-	static boolean ignoreStart;
+
     /**
      * YOUR JAVADOC HERE
+     * @param Scanner - make scanner to use this function
+     * @author Jeremy John
+     * 
      */
     public static void execute(Scanner sc) {
     	
         /* YOUR CODE HERE */
-    	x = 0;
-    	ignoreStart = false;
+    	int x = 0;
+    	
+    	String phrase = "";
+    	String response = "";
+    	boolean test;
+    	boolean ignoreStart = false;
     	System.out.println("Welcome to Palindrome Tester");
     	while(x == 0) {
     		
     		//reset variables
-    		temp = "";
-    		phrase = "";
-    		response = "";
+    		x = 0;
+        	
+        	phrase = "";
+        	response = "";
+        	
     		
     		if(ignoreStart == false) {
 	    		System.out.print("Enter a phrase: ");
@@ -53,6 +57,9 @@ public class PalindromeTester {
 
     /**
      * YOUR JAVADOC HERE
+     * @author - Jeremy John
+     * @param phrase - enter a phrase to testif it is a palindrome
+     * @return - boolean, true = is palindrome, falsi = not a palindrome
      */
     public static boolean isPalindrome(String phrase) {
         /* YOUR CODE HERE */
@@ -62,7 +69,8 @@ public class PalindromeTester {
     	phrase = removeSpaces(phrase);
     	phrase = removePunctuation(phrase);
     	
-    	String testPhrase = flipPhrase(phrase);
+    	String testPhrase;
+    	testPhrase = flipPhrase(phrase);
     	
     	if(phrase.equals(testPhrase)) {
     		return true;
@@ -72,7 +80,12 @@ public class PalindromeTester {
     	
     }
 
-    /* Any helper methods you might need */
+
+    /*
+     * JAVADOC
+     * @param palindrome
+     * 
+     */
     private static String removeNumbers(String palindrome) {
     	//removing 1
     	for(int i = 0;  i < palindrome.length(); i++) {
@@ -135,7 +148,7 @@ public class PalindromeTester {
     		}
     	}
     	
-    	
+    	//System.out.println("Removed numbers: " + palindrome);
     	return palindrome;
     	
     	
@@ -144,23 +157,27 @@ public class PalindromeTester {
     private static String removeSpaces(String palindrome) {
     	for(int i = 0;  i < palindrome.length(); i++) {
     		if(palindrome.indexOf(" ") >= 0) {
-    			palindrome = (palindrome.substring(0,palindrome.indexOf("")) + palindrome.substring(palindrome.indexOf("") + 1) );
+    			palindrome = (palindrome.substring(0,palindrome.indexOf(" ")) + palindrome.substring(palindrome.indexOf(" ") + 1) );
     		}
     	}
+    	//System.out.println("Removed spaces: " + palindrome);
     	return palindrome;
     	
     }
     
     private static String removePunctuation(String palindrome) {
     	String noPunct = palindrome.replaceAll("\\p{Punct}", "");
+    	//System.out.println("Removed punctuation: " + noPunct);
     	return noPunct;
     }
     
     private static String flipPhrase(String palindrome) {
+    	String temp = "";
     	for(int i = palindrome.length() -1 ; i >= 0; i--) {
     		 temp = temp + palindrome.substring(i, i+1);
     		
     	}
+    	//System.out.println(temp);
     	return temp;
     }
     

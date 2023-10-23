@@ -9,8 +9,8 @@ public class RockPaperScissors {
 
     /* ANY CODE YOU NEED HERE */
 	
-	static int x =0;
-	static String comp;
+	
+	
 	static int result = 0;
 	static int wins = 0;
 	static int losses = 0;
@@ -21,11 +21,13 @@ public class RockPaperScissors {
 	static boolean playAgainValid = true;
 	static boolean loop = true;
 	static boolean run = true;
-	static int tempChoice;
-	static int rand;
+	
+	
 	
     /**
      * JAVADOC HERE
+     * @author - Jeremy John
+     * @param - Scanner: create and use scanner to use method
      */
     public static void play(Scanner sc) {
         /* YOUR CODE HERE */
@@ -37,10 +39,10 @@ public class RockPaperScissors {
     	ties = 0;
     	
     	result = 0;
+    	String comp;
+    	int x = 0;
     	
-    	x = 0;
-    	tempChoice = 1;
-    	rand = 1;
+    	
     
     	//Looping
     	
@@ -69,7 +71,7 @@ public class RockPaperScissors {
 	        		result = results(input,comp);
         	
 	        		//Output
-	        		resultOutput();
+	        		resultOutput(input,comp);
 	        		
 	        		while(run == true) {
 	        			if(RPSvalid == true) {
@@ -91,48 +93,25 @@ public class RockPaperScissors {
 	        					System.out.println("Thanks for playing!");
 	        					run = false;
 	           		
-	        	}
+	        				}
 	        	
-	        }
+	        			}
 	        			
 	        		}
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
-	        		
 	        		
         		} else {
         			// do nothing and loop
         			System.out.println("Invalid input, please try again");
-        		}
-        		
-        		
-        		
-	        	
+        		}	
 	        		
-	        		
-	        	}
-	        	
-	        
-        		
-        	}	
-        	
-        	
-	        
-        	
-        }		
+	        }		
+        }	  	
+    }		
     
     	
     	
     	
-    public static boolean isValidInput(String playerInput) {
+    private static boolean isValidInput(String playerInput) {
     	//System.out.println(playerInput);
     	//System.out.println(playerInput.equalsIgnoreCase("R"));
     	if(playerInput.equalsIgnoreCase("R") || playerInput.equalsIgnoreCase("P") || playerInput.equalsIgnoreCase("S") || playerInput.equalsIgnoreCase("A") ) {
@@ -142,7 +121,7 @@ public class RockPaperScissors {
     	}
     }
     
-    public static boolean YNValid(String playerInput) {
+    private static boolean YNValid(String playerInput) {
     	//System.out.println(playerInput);
     	//System.out.println(playerInput.equalsIgnoreCase("R"));
     	if(playerInput.equalsIgnoreCase("N") || playerInput.equalsIgnoreCase("Y")) {
@@ -164,7 +143,6 @@ public class RockPaperScissors {
      */
     public static int results(String playerChoice, String computerChoice) {
         /* YOUR CODE HERE */
-    	//int lose = Integer.parseInt("-1");
     	
     	
     	//ignoring the case:
@@ -212,7 +190,7 @@ public class RockPaperScissors {
     }
     
     
-    public static void resultOutput() {
+    private static void resultOutput(String input, String comp) {
 	    if(result >= -1 && result <= 1) {
 			RPSvalid = true;
 			if(result == -1) {
@@ -252,9 +230,9 @@ public class RockPaperScissors {
     }
     
     
-    public static String playerRandom() {
+    private static String playerRandom() {
     	
-		tempChoice = (int)(Math.random()*3+1);
+		int tempChoice = (int)(Math.random()*3+1);
     		
 		if(tempChoice == 1) {
 			return "R";
@@ -267,8 +245,8 @@ public class RockPaperScissors {
 		
     }    /* any helper methods you might need */
 
-    public static String compRandom() {
-    	rand = (int)(Math.random()*3+1);
+    private static String compRandom() {
+    	int rand = (int)(Math.random()*3+1);
     	if(rand == 1) {
 			return "R";
     		

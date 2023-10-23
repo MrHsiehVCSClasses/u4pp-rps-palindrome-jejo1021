@@ -36,7 +36,8 @@ public class RockPaperScissorsTests {
             }
 
             String[] results = tokens[tokens.length - 2].split(" ");
-            assertAll("logic results", () -> assertEquals(winsLossesDraws[0], Integer.parseInt(results[2])),
+            assertAll("logic results", 
+            		() -> assertEquals(winsLossesDraws[0], Integer.parseInt(results[2])),
                     () -> assertEquals(winsLossesDraws[1], Integer.parseInt(results[5])),
                     () -> assertEquals(winsLossesDraws[2], Integer.parseInt(results[8])));
         });
