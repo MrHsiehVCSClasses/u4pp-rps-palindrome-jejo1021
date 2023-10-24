@@ -10,7 +10,8 @@ public class PalindromeTester {
      * YOUR JAVADOC HERE
      * @param Scanner - make scanner to use this function
      * @author Jeremy John
-     * 
+     * palindrome tester program
+     * runs as long as the user wants
      */
     public static void execute(Scanner sc) {
     	
@@ -58,34 +59,31 @@ public class PalindromeTester {
     /**
      * YOUR JAVADOC HERE
      * @author - Jeremy John
-     * @param phrase - enter a phrase to testif it is a palindrome
-     * @return - boolean, true = is palindrome, falsi = not a palindrome
+     * @param phrase - enter a phrase to test if it is a palindrome
+     * @return - boolean, true = is palindrome, false = not a palindrome
+     * 
      */
     public static boolean isPalindrome(String phrase) {
         /* YOUR CODE HERE */
-    	//ignoring spaces, puncutation capitalization
+    	//format the original phrase
     	phrase = phrase.toLowerCase();	
     	phrase = removeNumbers(phrase);
     	phrase = removeSpaces(phrase);
     	phrase = removePunctuation(phrase);
     	
+    	//makes a flipped version of the inputed phrase
     	String testPhrase;
     	testPhrase = flipPhrase(phrase);
     	
+    	//tests if phrase is a palindrome
     	if(phrase.equals(testPhrase)) {
     		return true;
     	}else {
     		return false;
     	}
-    	
     }
-
-
-    /*
-     * JAVADOC
-     * @param palindrome
-     * 
-     */
+    
+    //removes all digits from the test phrase
     private static String removeNumbers(String palindrome) {
     	//removing 1
     	for(int i = 0;  i < palindrome.length(); i++) {
@@ -147,13 +145,10 @@ public class PalindromeTester {
     			palindrome = (palindrome.substring(0,palindrome.indexOf("0")) + palindrome.substring(palindrome.indexOf("0") + 1) );
     		}
     	}
-    	
-    	//System.out.println("Removed numbers: " + palindrome);
     	return palindrome;
-    	
-    	
     }
     
+    //removes all spaces from the test phrase
     private static String removeSpaces(String palindrome) {
     	for(int i = 0;  i < palindrome.length(); i++) {
     		if(palindrome.indexOf(" ") >= 0) {
@@ -162,25 +157,24 @@ public class PalindromeTester {
     	}
     	//System.out.println("Removed spaces: " + palindrome);
     	return palindrome;
-    	
     }
     
+    //removes the puctuation from the test phrase
     private static String removePunctuation(String palindrome) {
     	String noPunct = palindrome.replaceAll("\\p{Punct}", "");
-    	//System.out.println("Removed punctuation: " + noPunct);
     	return noPunct;
     }
     
+    //returns a flipped version of the input
     private static String flipPhrase(String palindrome) {
     	String temp = "";
     	for(int i = palindrome.length() -1 ; i >= 0; i--) {
     		 temp = temp + palindrome.substring(i, i+1);
-    		
     	}
-    	//System.out.println(temp);
     	return temp;
     }
     
+    //determines if the yes/no input is valid, if yes, then continue as normal, if no, repeat the question
     private static boolean isValid(String response) {
     	if(response.equalsIgnoreCase("N") || response.equalsIgnoreCase("Y")) {
     		return true;

@@ -2,6 +2,7 @@ package u4pp;
 
 /**
 * JAVADOC HERE
+play RPS against a computer until satisfied
 */
 import java.util.Scanner;
 
@@ -21,12 +22,15 @@ public class RockPaperScissors {
      */
     public static void play(Scanner sc) {
         /* YOUR CODE HERE */
-    	//Start
+    	
+    	
     	boolean playAgainValid = true;
     	boolean loop = true;
     	boolean run = true;
     	String input;
     	String play;
+    	
+    	
     	System.out.println("Welcome to Rock Paper Scissors");
     	wins = 0;
     	losses = 0;
@@ -56,10 +60,11 @@ public class RockPaperScissors {
         		
         		if (isValidInput(input)) {
         			// rest of program
+        			
         			if(input.equalsIgnoreCase("A")) {
-        				input = playerRandom();
+        				input = randomChoice();
         			}
-        			comp = compRandom();
+        			comp = randomChoice();
         		
 	        		//taking results
 	        		result = results(input,comp);
@@ -104,7 +109,7 @@ public class RockPaperScissors {
     
     	
     	
-    	
+    //determines if RPS input is valid
     private static boolean isValidInput(String playerInput) {
     	//System.out.println(playerInput);
     	//System.out.println(playerInput.equalsIgnoreCase("R"));
@@ -115,6 +120,7 @@ public class RockPaperScissors {
     	}
     }
     
+    //determines if yes/no input is valid
     private static boolean YNValid(String playerInput) {
     	//System.out.println(playerInput);
     	//System.out.println(playerInput.equalsIgnoreCase("R"));
@@ -129,10 +135,10 @@ public class RockPaperScissors {
 
     /**
      * JAVADOC 
-     * @author jeremy
-     * @param player choice
-     * @param computerChoice
-     * 
+     * @author Jeremy John
+     * @param player choice - user input or random if a is selected
+     * @param computerChoice - computer generated choice
+     * determines the result of an RPS match
 
      */
     public static int results(String playerChoice, String computerChoice) {
@@ -142,8 +148,7 @@ public class RockPaperScissors {
     	//ignoring the case:
     	playerChoice.toUpperCase();
     	
-    	
-    	
+    	//determines results
     	if(playerChoice.equalsIgnoreCase("R") || playerChoice.equalsIgnoreCase("P") || playerChoice.equalsIgnoreCase("S")) {
     		//Tie
 	    	if(playerChoice.equalsIgnoreCase(computerChoice)) {
@@ -183,7 +188,7 @@ public class RockPaperScissors {
     	}
     }
     
-    
+    //prints out computer and player choice + the results of the match
     private static void resultOutput(String input, String comp) {
 	    if(result >= -1 && result <= 1) {
 			RPSvalid = true;
@@ -223,8 +228,8 @@ public class RockPaperScissors {
     	}
     }
     
-    
-    private static String playerRandom() {
+    //returns a random RPS choice for comp/if user selects a
+    private static String randomChoice() {
     	
 		int tempChoice = (int)(Math.random()*3+1);
     		
@@ -235,20 +240,5 @@ public class RockPaperScissors {
 		}else{
     		return "S";
 		}
-			
-		
-    }    /* any helper methods you might need */
-
-    private static String compRandom() {
-    	int rand = (int)(Math.random()*3+1);
-    	if(rand == 1) {
-			return "R";
-    		
-		}else if(rand == 2) {
-			return "P";
-		}else {
-			return "S";
-		}
-    }
-    
+    }    /* any helper methods you might need */    
 }
